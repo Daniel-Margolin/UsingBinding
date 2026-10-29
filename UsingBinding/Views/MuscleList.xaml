@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UsingBinding.Views.MuscleList"
+             Title="MuscleList">
+    <ScrollView>
+        <VerticalStackLayout Padding="20"
+                             Spacing="16">
+
+            <!-- Header -->
+
+            <VerticalStackLayout Spacing="4">
+
+                <Label Text="Muscle Library"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="#202124" />
+
+                <Label Text="Manage your muscles and their details."
+                       FontSize="14"
+                       TextColor="#666666" />
+
+            </VerticalStackLayout>
+
+
+            <!-- Muscle List -->
+
+            <Border BackgroundColor="White"
+                    Stroke="#DDDDDD"
+                    StrokeThickness="1"
+                    Padding="14">
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label Text="Your Muscles"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#202124" />
+
+                    <CollectionView ItemsSource="{Binding Muscles}"
+                                    SelectedItem="{Binding SelectedMuscle, Mode=TwoWay}"
+                                    SelectionMode="Single"
+                                    HeightRequest="220">
+
+                        <CollectionView.EmptyView>
+                            <Label Text="No muscles yet. Add your first muscle!"
+                                   Padding="10"
+                                   TextColor="#666666" />
+                        </CollectionView.EmptyView>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+                                <Border Stroke="#E0E0E0"
+                                        StrokeThickness="1"
+                                        Padding="12"
+                                        Margin="0,4">
+
+                                    <VerticalStackLayout Spacing="4">
+
+                                        <Label Text="{Binding Name}"
+                                               FontSize="17"
+                                               FontAttributes="Bold"
+                                               TextColor="#202124" />
+
+                                        <Label Text="{Binding BodyPart}"
+                                               FontSize="14"
+                                               TextColor="#666666" />
+
+                                    </VerticalStackLayout>
+
+                                </Border>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+
+            <!-- Edit Section -->
+
+            <Border BackgroundColor="White"
+                    Stroke="#DDDDDD"
+                    StrokeThickness="1"
+                    Padding="14">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="Muscle Details"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#202124" />
+
+                    <Label Text="Muscle Name"
+                           TextColor="#333333" />
+
+                    <Entry Text="{Binding SelectedMuscle.Name, Mode=TwoWay}"
+                           Placeholder="Enter muscle name"
+                           BackgroundColor="#F4F5F7"
+                           TextColor="#202124" />
+
+                    <Label Text="Body Part"
+                           TextColor="#333333" />
+
+                    <Entry Text="{Binding SelectedMuscle.BodyPart, Mode=TwoWay}"
+                           Placeholder="Enter body part"
+                           BackgroundColor="#F4F5F7"
+                           TextColor="#202124" />
+
+                    <Label Text="Select a muscle above to edit its details."
+                           FontSize="12"
+                           TextColor="#777777" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+
+            <!-- Actions -->
+
+            <VerticalStackLayout Spacing="10">
+
+                <Button Text="Add Muscle"
+                        Clicked="OnAddMuscleClicked"
+                        BackgroundColor="#202124"
+                        TextColor="White" />
+
+                <Button Text="Save Changes"
+                        Clicked="OnSaveChangesClicked"
+                        BackgroundColor="#D9E8FF"
+                        TextColor="#202124" />
+
+                <Button Text="Delete Selected Muscle"
+                        Clicked="OnDeleteMuscleClicked"
+                        BackgroundColor="#F8D7DA"
+                        TextColor="#842029" />
+
+                <Button Text="Clear Selection"
+                        Clicked="OnClearSelectionClicked"
+                        BackgroundColor="#E5E5E5"
+                        TextColor="#202124" />
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

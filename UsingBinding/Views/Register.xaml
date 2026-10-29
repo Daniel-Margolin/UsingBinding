@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UsingBinding.Views.Register"
+             Title="Register">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+
+            <Label Text="Welcome To MuscleUp! Create an account"
+           FontSize="28"
+           FontAttributes="Bold"
+           HorizontalOptions="Center"
+           Margin="0,20,0,20" />
+
+            <Label Text="Enter your new username:" />
+            <Entry x:Name="UserName" Placeholder="Username" />
+            <Label x:Name="errUserName" TextColor="Red" />
+
+            <Label Text="Enter your email:" />
+            <Entry x:Name="EmailAdress"
+                   Placeholder="Email"
+                   Keyboard="Email" />
+            <Label x:Name="errEmail" TextColor="Red" />
+
+            <Label Text="Enter your new password:" />
+            <Entry x:Name="PassWord"
+                   Placeholder="Password"
+                   IsPassword="True" />
+            <Label x:Name="errPassword" TextColor="Red" />
+
+            <Label Text="Confirm password:" />
+            <Entry x:Name="ConfirmPassWord"
+                   Placeholder="Confirm Password"
+                   IsPassword="True" />
+            <Label x:Name="errConfirmPassword" TextColor="Red" />
+
+            <Label Text="Enter your birthday:" />
+            <DatePicker x:Name="DateOfBirth" />
+            <Label x:Name="errDateOfBirth" TextColor="Red" />
+
+            <Label Text="Already have an account? Log In"
+                   TextColor="Blue"
+                   HorizontalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnLoginClicked" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Button Text="Register"
+            Clicked="OnRegisterButtonClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
